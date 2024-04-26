@@ -1,5 +1,5 @@
 export const environment = {
   production: true,
-  base: `${location.protocol}//${location.host}/`,
-  client: `${location.protocol}//${location.host}/`,
+  base: 'https://www.jugendkompass-din.de/',
+  client: 'https://www.jugendkompass-din.de/',
 };
