@@ -5,7 +5,6 @@ import { CinValidators } from 'ngx-cinlib/forms/validators';
 import { AddressEntity, Maybe, OrganisationMediaEntity } from 'src/app/core/api/generated/schema';
 import { PortalParticipateActions } from '../../state/portal-participate.actions';
 
-
 @Component({
   selector: 'app-portal-participate-create-organisation',
   templateUrl: './portal-participate-create-organisation.component.html',
@@ -31,7 +30,7 @@ export class PortalParticipateCreateOrganisationComponent {
 
   public uploadsForm = this.fb.group({
     uploads: [[] as Maybe<OrganisationMediaEntity>[], [Validators.required]],
-  }); 
+  });
 
   constructor(
     private store: Store,

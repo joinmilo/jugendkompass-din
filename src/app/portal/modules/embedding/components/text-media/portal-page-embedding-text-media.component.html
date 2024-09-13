@@ -3,7 +3,7 @@
     <section class="block">
       <ng-container *ngTemplateOutlet="content; context: { $implicit: element }">
       </ng-container>
-      
+
       @if (element?.media) {
         <cin-media-element [media]="element?.media">
         </cin-media-element>
@@ -23,17 +23,17 @@
 
   @if (element?.title || element?.text || element?.url) {
     <div>
-  
+
       @if (element?.title) {
         <h1 class="mat-headline-4">
           {{ element?.title | translatable: 'translatable' | async }}
         </h1>
       }
-  
+
       @if (element?.text) {
         <section [innerHTML]="element?.text | translatable: 'translatable' | async"></section>
       }
-  
+
       @if (element?.url) {
         <a mat-raised-button
           color="primary"
