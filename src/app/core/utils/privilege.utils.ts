@@ -18,7 +18,7 @@ export const requireAnyPrivilege = (...privileges: Privilege[]): CanActivateFn =
 
 export const isAuthenticated = (): CanActivateFn =>
   () => {
-    const isAuthenticated = !!inject(AuthService).tokens?.access
+    const isAuthenticated = !!inject(AuthService).rawTokens?.access
 
     if (!isAuthenticated) {
       inject(Store).dispatch(CoreUserActions.requireLogin());

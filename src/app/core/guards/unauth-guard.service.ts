@@ -6,9 +6,9 @@ import { AuthService } from 'ngx-cinlib/security';
   providedIn: 'root'
 })
 export class UnauthGuardService {
-  
+
   public canActivate(): boolean {
-    const isUnauthenticated = !!this.authService.tokens?.access
+    const isUnauthenticated = !!this.authService.rawTokens?.access
 
     if (isUnauthenticated) {
       this.router.navigate(['']);
