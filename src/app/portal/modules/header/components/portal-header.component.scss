@@ -5,6 +5,10 @@ mat-toolbar {
   height: 100%;
 }
 
+mat-toolbar {
+  align-items: flex-end !important;
+}
+
 .scrolled {
   // background-color: white;
   box-shadow: 0px 2px 8px 0px var(--color-box-shadow);
