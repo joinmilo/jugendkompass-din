@@ -1,4 +1,6 @@
-<mat-toolbar [class.scrolled]="scrolled">
+<mat-toolbar
+  [class.scrolled]="scrolled"
+  [class.ios]="isIOs">
   <app-portal-header-desktop></app-portal-header-desktop>
   <app-portal-header-mobile></app-portal-header-mobile>
 </mat-toolbar>
