@@ -2,7 +2,6 @@ import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { LoadingComponent, LoadingService } from 'ngx-cinlib/layouts/loading';
-import { isIOs } from 'src/app/core/utils/device.utils';
 import { PortalFooterModule } from '../footer/portal-footer.module';
 import { PortalHeaderModule } from '../header/portal-header.module';
 
@@ -23,8 +22,6 @@ import { PortalHeaderModule } from '../header/portal-header.module';
 export class PortalLayoutComponent {
 
   public loading = this.loadingService.isLoading();
-
-  public isIOs = isIOs();
 
   constructor(
     private loadingService: LoadingService,

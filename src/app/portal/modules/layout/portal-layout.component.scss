@@ -11,10 +11,6 @@ app-portal-header {
   z-index: 99;
 }
 
-.ios {
-  --header-height: 7rem;
-}
-
 main {
   margin-top: var(--header-height);
   flex: 2 0 calc(100vh - var(--header-height));
