@@ -13,15 +13,25 @@
         @if (element?.text) {
           <section [innerHTML]="element?.text | translatable: 'translatable' | async"></section>
         }
-  
+
         @if (element?.button) {
-          <a mat-raised-button
-            color="primary"
-            [href]="element?.url"
-            [i18nLabel]="element?.button
-              ? (element?.button | translatable: 'translatable' | async)
-              : 'learnMore'">
-          </a>
+          @if (element?.url?.value?.includes('http') || element?.url?.value?.includes('www')) {
+            <a mat-raised-button
+              color="primary"
+              [routerLink]="element?.url?.value"
+              [i18nLabel]="element?.button
+                ? (element?.button | translatable: 'translatable' | async)
+                : 'learnMore'">
+            </a>
+          } @else {
+            <a mat-raised-button
+              color="primary"
+              [href]="element?.url?.value"
+              [i18nLabel]="element?.button
+                ? (element?.button | translatable: 'translatable' | async)
+                : 'learnMore'">
+            </a>
+          }
         }
       </div>
     </mat-expansion-panel>

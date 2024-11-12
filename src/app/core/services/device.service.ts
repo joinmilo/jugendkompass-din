@@ -14,12 +14,12 @@ export class DeviceService {
     'iPod'
   ].includes(navigator.platform)
   // iPad on iOS 13 detection
-  || (navigator.userAgent.includes('Mac') && 'ontouchend' in document)
-
-  // public isIOs = true;
+  || (navigator.userAgent.includes('Mac') && 'ontouchend' in document);
 
   constructor() {
-    document.documentElement.style.setProperty('--header-height', '7rem');
+    if (this.isIOs) {
+      document.documentElement.style.setProperty('--header-height', '7rem');
+    }
   }
 
 }
