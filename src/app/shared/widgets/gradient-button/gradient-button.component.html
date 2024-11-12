@@ -1,30 +1,46 @@
 @if (url) {
-  <a mat-raised-button [href]="url" [target]="openNewTab ? '_blank' : ''" [i18nLabel]="label ? label : null">
-    {{ name }}
-    @if(description){
-      <button (click)="showDescription = !showDescription; $event.stopPropagation()">
-        @if (!showDescription) { <cin-icon [icon]="['fas', 'chevron-down']"></cin-icon> }
-        @if (showDescription) { <cin-icon [icon]="['fas', 'chevron-up']"></cin-icon> }
-    </button> 
+  @if (url.includes('http') || url.includes('www')) {
+    <a mat-raised-button [href]="url" [target]="openNewTab ? '_blank' : ''" [i18nLabel]="label ? label : null">
+      <ng-container *ngTemplateOutlet="content" />
+    </a>
+
+    <div [@collapse]="showDescription">
+      <p>{{ description }}</p>
+    </div>
+  } @else {
+    <a mat-raised-button [routerLink]="url" [i18nLabel]="label ? label : null">
+      <ng-container *ngTemplateOutlet="content" />
+    </a>
+
+    <div [@collapse]="showDescription">
+      <p>{{ description }}</p>
+    </div>
   }
-    @if(icon) { <cin-icon [icon]="icon"></cin-icon> }
-  </a>
-  <div [@collapse]="showDescription">
-    <p>{{ description }}</p>
-  </div>
 } @else {
   <a mat-raised-button [i18nLabel]="label ? label : null">
-    {{ name }}
-    @if(description) {
-      <button (click)="showDescription = !showDescription; $event.stopPropagation()">
-        @if (!showDescription) { <cin-icon [icon]="['fas', 'chevron-down']"></cin-icon> }
-        @if (showDescription) { <cin-icon [icon]="['fas', 'chevron-up']"></cin-icon> }
-    </button>
-  }
-    @if(icon) { <cin-icon [icon]="icon"></cin-icon> }
+    <ng-container *ngTemplateOutlet="content" />
   </a>
 
   <div [@collapse]="showDescription">
     <p>{{ description }}</p>
   </div>
 }
+
+<ng-template #content>
+  {{ name }}
+
+  @if (description) {
+    <button (click)="showDescription = !showDescription; $event.stopPropagation()">
+      @if (showDescription) {
+        <cin-icon [icon]="['fas', 'chevron-up']"></cin-icon>
+      } @else {
+        <cin-icon [icon]="['fas', 'chevron-down']"></cin-icon>
+      }
+  </button>
+  }
+
+  @if (icon) {
+    <cin-icon [icon]="icon"></cin-icon>
+   }
+</ng-template>
+

@@ -34,14 +34,24 @@
         <section [innerHTML]="element?.text | translatable: 'translatable' | async"></section>
       }
 
-      @if (element?.url) {
-        <a mat-raised-button
-          color="primary"
-          [href]="element?.url?.value"
-          [i18nLabel]="element?.button
-            ? (element?.button | translatable: 'translatable' | async)
-            : 'learnMore'">
-        </a>
+      @if (element?.button) {
+        @if (element?.url?.value?.includes('http') || element?.url?.value?.includes('www')) {
+          <a mat-raised-button
+            color="primary"
+            [routerLink]="element?.url?.value"
+            [i18nLabel]="element?.button
+              ? (element?.button | translatable: 'translatable' | async)
+              : 'learnMore'">
+          </a>
+        } @else {
+          <a mat-raised-button
+            color="primary"
+            [href]="element?.url?.value"
+            [i18nLabel]="element?.button
+              ? (element?.button | translatable: 'translatable' | async)
+              : 'learnMore'">
+          </a>
+        }
       }
     </div>
   }
